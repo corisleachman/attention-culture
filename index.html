@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Attention Culture — Brand Guidelines</title>
+  <link href="https://fonts.googleapis.com/css2?family=Neue+Metana&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────────────────── */
+    :root {
+      --pink:   #ea124b;
+      --black:  #191919;
+      --grey:   #eaefef;
+      --white:  #ffffff;
+      --radius: 2px;
+      --gap:    clamp(40px, 6vw, 96px);
+    }
+
+    /* ─── RESET ──────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    /* ─── BASE ───────────────────────────────────────────────────── */
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+      font-size: 15px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── TYPOGRAPHY HELPERS ─────────────────────────────────────── */
+    .neue { font-family: 'Neue Metana', 'Impact', sans-serif; }
+    .menlo { font-family: 'Menlo', 'Monaco', 'Courier New', monospace; }
+
+    h1, h2, h3, .label {
+      font-family: 'Neue Metana', 'Impact', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      line-height: 1.05;
+    }
+
+    /* ─── NAV ────────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 40px;
+      background: var(--black);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    nav img { height: 32px; }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 32px;
+    }
+    nav ul a {
+      font-family: 'Neue Metana', sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    nav ul a:hover { color: var(--pink); }
+
+    /* ─── HERO ───────────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 40px 60px;
+      padding-top: 100px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 80% 40%, rgba(234,18,75,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-version {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(56px, 10vw, 140px);
+      max-width: 900px;
+      margin-bottom: 32px;
+    }
+    .hero h1 span { color: var(--pink); }
+    .hero-meta {
+      display: flex;
+      gap: 48px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .hero-meta-item { }
+    .hero-meta-item .meta-label {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      display: block;
+      margin-bottom: 4px;
+      font-family: 'Menlo', monospace;
+    }
+    .hero-meta-item .meta-val {
+      font-family: 'Neue Metana', sans-serif;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* ─── SECTION SHELL ──────────────────────────────────────────── */
+    section {
+      padding: var(--gap) 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    section.light {
+      background: var(--grey);
+      color: var(--black);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    section.light h2,
+    section.light h3,
+    section.light .section-num { color: var(--black); }
+    section.light .section-num { opacity: 0.2; }
+    section.pink-bg {
+      background: var(--pink);
+      color: var(--white);
+    }
+
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+      margin-bottom: clamp(32px, 5vw, 64px);
+    }
+    .section-num {
+      font-family: 'Menlo', monospace;
+      font-size: 11px;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.1em;
+    }
+    h2.section-title {
+      font-size: clamp(32px, 5vw, 64px);
+    }
+
+    /* ─── INTRO TEXT ─────────────────────────────────────────────── */
+    .intro-text {
+      font-size: 17px;
+      line-height: 1.7;
+      max-width: 640px;
+      color: rgba(255,255,255,0.65);
+    }
+    section.light .intro-text { color: rgba(25,25,25,0.6); }
+
+    /* ─── COLOUR PALETTE ─────────────────────────────────────────── */
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2px;
+      margin-top: 48px;
+    }
+    .swatch {
+      aspect-ratio: 1;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+      overflow: hidden;
+    }
+    .swatch-name {
+      font-family: 'Neue Metana', sans-serif;
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .swatch-hex {
+      font-family: 'Menlo', monospace;
+      font-size: 12px;
+      opacity: 0.7;
+      display: block;
+    }
+    .swatch-role {
+      font-family: 'Menlo', monospace;
+      font-size: 11px;
+      opacity: 0.5;
+      display: block;
+      margin-top: 4px;
+    }
+    .swatch-pink  { background: var(--pink); color: var(--white); }
+    .swatch-black { background: var(--black); color: var(--white); border: 1px solid rgba(255,255,255,0.08); }
+    .swatch-grey  { background: var(--grey); color: var(--black); }
+    .swatch-white { background: var(--white); color: var(--black); border: 1px solid rgba(0,0,0,0.08); }
+
+    .colour-usage {
+      margin-top: 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .colour-rule {
+      padding: 28px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    section.light .colour-rule { border-color: rgba(0,0,0,0.08); }
+    .colour-rule h4 {
+      font-family: 'Neue Metana', sans-serif;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+    .colour-rule p {
+      font-size: 13px;
+      line-height: 1.6;
+      opacity: 0.6;
+    }
+
+    /* ─── LOGO SECTION ───────────────────────────────────────────── */
+    .logo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-top: 48px;
+    }
+    .logo-cell {
+      padding: 60px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      min-height: 300px;
+    }
+    .logo-cell.on-black { background: var(--black); border: 1px solid rgba(255,255,255,0.06); }
+    .logo-cell.on-white { background: var(--white); }
+    .logo-cell.on-pink  { background: var(--pink); }
+    .logo-cell.on-grey  { background: var(--grey); }
+    .logo-cell img { max-height: 120px; max-width: 80%; object-fit: contain; }
+    .logo-cell img.horizontal { max-height: 60px; }
+    .logo-meta {
+      text-align: center;
+    }
+    .logo-meta .variant-name {
+      font-family: 'Neue Metana', sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .logo-cell.on-black .variant-name,
+    .logo-cell.on-pink  .variant-name { color: rgba(255,255,255,0.5); }
+    .logo-cell.on-white .variant-name,
+    .logo-cell.on-grey  .variant-name { color: rgba(25,25,25,0.5); }
+    .logo-meta .variant-usage {
+      font-family: 'Menlo', monospace;
+      font-size: 11px;
+    }
+    .logo-cell.on-black .variant-usage { color: rgba(255,255,255,0.3); }
+    .logo-cell.on-white .variant-usage,
+    .logo-cell.on-grey  .variant-usage { color: rgba(25,25,25,0.4); }
+    .logo-cell.on-pink  .variant-usage { color: rgba(255,255,255,0.5); }
+
+    .logo-rules {
+      margin-top: 48px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .logo-rule-card {
+      padding: 28px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .logo-rule-card .rule-label {
+      font-family: 'Neue Metana', sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--pink);
+      display: block;
+      margin-bottom: 10px;
+    }
+    .logo-rule-card p {
+      font-family: 'Menlo', monospace;
+      font-size: 12px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.55);
+    }
+
+    /* ─── TYPOGRAPHY ─────────────────────────────────────────────── */
+    .type-stack {
+      margin-top: 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .type-row {
+      padding: 40px;
+      background: rgba(255,255,255,0.03);
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 40px;
+      align-items: center;
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+    .type-info {}
+    .type-info .type-label {
+      font-family: 'Menlo', monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--pink);
+      display: block;
+      margin-bottom: 6px;
+    }
+    .type-info .type-name {
+      font-family: 'Neue Metana', sans-serif;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .type-info .type-desc {
+      font-family: 'Menlo', monospace;
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.6;
+    }
+    .type-sample {}
+
+    /* Type samples */
+    .sample-headline-primary {
+      font-family: 'Neue Metana', 'Impact', sans-serif;
+      font-size: clamp(40px, 6vw, 80px);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      line-height: 1;
+    }
+    .sample-headline-sub {
+      font-family: 'Neue Metana', 'Impact', sans-serif;
+      font-size: clamp(18px, 3vw, 32px);
+      text-transform: lowercase;
+      letter-spacing: 0.02em;
+      line-height: 1.2;
+      color: rgba(255,255,255,0.7);
+    }
+    .sample-body {
+      font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+      font-size: 14px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.65);
+      max-width: 480px;
+    }
+    .sample-button {
+      display: inline-block;
+      font-family: 'Neue Metana', sans-serif;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 14px 28px;
+      border: 1px solid var(--white);
+      color: var(--white);
+    }
+
+    /* ─── TEXT HIGHLIGHT SYSTEM ──────────────────────────────────── */
+    .highlight-system {
+      margin-top: 48px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .highlight-card {
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .highlight-card.dark-bg  { background: var(--black); border: 1px solid rgba(255,255,255,0.08); }
+    .highlight-card.light-bg { background: var(--white); }
+    .highlight-card.pink-bg  { background: var(--pink); }
+
+    .highlight-card .highlight-label {
+      font-family: 'Menlo', monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      opacity: 0.45;
+    }
+    .dark-bg  .highlight-label { color: var(--white); }
+    .light-bg .highlight-label { color: var(--black); }
+    .pink-bg  .highlight-label { color: var(--white); }
+
+    .highlight-card .highlight-example {
+      font-family: 'Menlo', monospace;
+      font-size: 15px;
+      line-height: 1.65;
+    }
+    .dark-bg  .highlight-example { color: var(--white); }
+    .light-bg .highlight-example { color: var(--black); }
+    .pink-bg  .highlight-example { color: var(--white); }
+
+    .highlight-card .highlight-spec {
+      font-family: 'Menlo', monospace;
+      font-size: 11px;
+      opacity: 0.45;
+      margin-top: auto;
+    }
+    .dark-bg  .highlight-spec { color: var(--white); }
+    .light-bg .highlight-spec { color: var(--black); }
+    .pink-bg  .highlight-spec { color: var(--white); }
+
+    /* ─── TONE OF VOICE ──────────────────────────────────────────── */
+    .tov-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      margin-top: 48px;
+    }
+    .tov-card {
+      padding: 36px 32px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .tov-card h4 {
+      font-family: 'Neue Metana', sans-serif;
+      font-size: 22px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 12px;
+    }
+    .tov-card p {
+      font-family: 'Menlo', monospace;
+      font-size: 13px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.5);
+    }
+    .tov-card.active { background: rgba(234,18,75,0.08); border-color: var(--pink); }
+    .tov-card.active h4 { color: var(--pink); }
+
+    .tov-do-dont {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-top: 48px;
+    }
+    .do-col, .dont-col { padding: 32px; }
+    .do-col { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); }
+    .dont-col { background: rgba(234,18,75,0.04); border: 1px solid rgba(234,18,75,0.15); }
+    .col-header {
+      font-family: 'Neue Metana', sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      display: block;
+      margin-bottom: 20px;
+    }
+    .do-col .col-header { color: rgba(255,255,255,0.4); }
+    .dont-col .col-header { color: rgba(234,18,75,0.7); }
+    .do-col ul, .dont-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .do-col li, .dont-col li {
+      font-family: 'Menlo', monospace;
+      font-size: 13px;
+      line-height: 1.6;
+      padding-left: 20px;
+      position: relative;
+    }
+    .do-col li::before { content: '→'; position: absolute; left: 0; color: rgba(255,255,255,0.3); }
+    .dont-col li::before { content: '×'; position: absolute; left: 0; color: var(--pink); }
+    .do-col li { color: rgba(255,255,255,0.65); }
+    .dont-col li { color: rgba(255,255,255,0.5); }
+
+    /* ─── MISSION STRIP ──────────────────────────────────────────── */
+    .mission-strip {
+      background: var(--pink);
+      padding: 80px 40px;
+    }
+    .mission-strip .mission-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .mission-strip .mission-label {
+      font-family: 'Menlo', monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.6);
+      display: block;
+      margin-bottom: 20px;
+    }
+    .mission-strip blockquote {
+      font-family: 'Neue Metana', sans-serif;
+      font-size: clamp(24px, 4vw, 52px);
+      text-transform: uppercase;
+      line-height: 1.1;
+      letter-spacing: 0.02em;
+      color: var(--white);
+    }
+
+    /* ─── USAGE EXAMPLES ─────────────────────────────────────────── */
+    .usage-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 48px;
+    }
+    .usage-card {
+      padding: 40px 32px;
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .usage-card.u1 { background: var(--black); border: 1px solid rgba(255,255,255,0.08); }
+    .usage-card.u2 { background: var(--white); }
+    .usage-card.u3 { background: var(--grey); }
+    .usage-card h3 {
+      font-size: clamp(18px, 2.5vw, 28px);
+      margin-bottom: 12px;
+    }
+    .usage-card.u1 h3 { color: var(--white); }
+    .usage-card.u2 h3,
+    .usage-card.u3 h3 { color: var(--black); }
+    .usage-card p {
+      font-family: 'Menlo', monospace;
+      font-size: 13px;
+      line-height: 1.65;
+    }
+    .usage-card.u1 p { color: rgba(255,255,255,0.55); }
+    .usage-card.u2 p,
+    .usage-card.u3 p { color: rgba(25,25,25,0.55); }
+    .usage-tag {
+      font-family: 'Menlo', monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+    .usage-card.u1 .usage-tag { color: rgba(255,255,255,0.25); }
+    .usage-card.u2 .usage-tag,
+    .usage-card.u3 .usage-tag { color: rgba(25,25,25,0.35); }
+
+    /* ─── FOOTER ─────────────────────────────────────────────────── */
+    footer {
+      padding: 48px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    footer img { height: 28px; }
+    footer p {
+      font-family: 'Menlo', monospace;
+      font-size: 11px;
+      color: rgba(255,255,255,0.25);
+      text-align: right;
+      line-height: 1.8;
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      nav ul { display: none; }
+      nav { padding: 16px 24px; }
+      .hero, section, footer { padding-left: 24px; padding-right: 24px; }
+      .logo-grid { grid-template-columns: 1fr; }
+      .colour-usage { grid-template-columns: 1fr; }
+      .highlight-system { grid-template-columns: 1fr; }
+      .type-row { grid-template-columns: 1fr; }
+      .tov-grid { grid-template-columns: 1fr; }
+      .tov-do-dont { grid-template-columns: 1fr; }
+      .usage-grid { grid-template-columns: 1fr; }
+      .logo-rules { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 16px; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <img src="assets/logos/logo-horizontal-white.png" alt="Attention Culture" />
+    <ul>
+      <li><a href="#colours">Colours</a></li>
+      <li><a href="#logo">Logo</a></li>
+      <li><a href="#typography">Typography</a></li>
+      <li><a href="#voice">Voice</a></li>
+      <li><a href="#usage">Usage</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <p class="hero-version">Brand Guidelines — v1.0 — March 2026</p>
+    <h1>Brand<br /><span>Guide</span><br />lines</h1>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="meta-label">Agency</span>
+        <span class="meta-val">Attention Culture</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="meta-label">Website</span>
+        <span class="meta-val">attentionculture.co.uk</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="meta-label">Mission</span>
+        <span class="meta-val">Conscious brand experiences in entertainment</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MISSION STRIP -->
+  <div class="mission-strip">
+    <div class="mission-inner">
+      <span class="mission-label">Our positioning</span>
+      <blockquote>We create conscious brand experiences in entertainment</blockquote>
+    </div>
+  </div>
+
+  <!-- 01 COLOURS -->
+  <section id="colours">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-num">01</span>
+        <h2 class="section-title">Colour Palette</h2>
+      </div>
+      <p class="intro-text">Four colours make up the entire Attention Culture palette. Hot Pink is the brand's primary accent and should command attention. Black and White form the foundation of all communications. Grey provides a neutral surface for supporting content.</p>
+
+      <div class="palette-grid">
+        <div class="swatch swatch-pink">
+          <span class="swatch-name">Hot Pink</span>
+          <span class="swatch-hex">#EA124B</span>
+          <span class="swatch-role">Primary accent — hero moments, CTAs, highlights</span>
+        </div>
+        <div class="swatch swatch-black">
+          <span class="swatch-name">Black</span>
+          <span class="swatch-hex">#191919</span>
+          <span class="swatch-role">Primary background — dark environments</span>
+        </div>
+        <div class="swatch swatch-grey">
+          <span class="swatch-name">Grey</span>
+          <span class="swatch-hex">#EAEFEF</span>
+          <span class="swatch-role">Supporting surface — light environments</span>
+        </div>
+        <div class="swatch swatch-white">
+          <span class="swatch-name">White</span>
+          <span class="swatch-hex">#FFFFFF</span>
+          <span class="swatch-role">Primary background — light environments, body text on dark</span>
+        </div>
+      </div>
+
+      <div class="colour-usage">
+        <div class="colour-rule">
+          <h4>Use Hot Pink sparingly</h4>
+          <p>Hot Pink is reserved for moments that demand attention — CTAs, key data points, highlight text backgrounds, and key brand touchpoints. Overuse diminishes its impact.</p>
+        </div>
+        <div class="colour-rule">
+          <h4>Default to Black + White</h4>
+          <p>Most brand communications live in Black and White. This creates a clean, high-contrast foundation that makes the Pink accent hit harder when it appears.</p>
+        </div>
+        <div class="colour-rule">
+          <h4>Grey for breathing room</h4>
+          <p>Grey (#EAEFEF) is used as an alternative light surface — particularly in documents, presentations, and sections that need separation without reaching for White.</p>
+        </div>
+        <div class="colour-rule">
+          <h4>Never use colour gradients</h4>
+          <p>All colours are used flat and solid. No gradients, tints, or transparency overlays of brand colours. Opacity is only ever applied to text, not background fills.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 LOGO -->
+  <section id="logo" class="light">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-num">02</span>
+        <h2 class="section-title">Logo</h2>
+      </div>
+      <p class="intro-text" style="color: rgba(25,25,25,0.6);">The Attention Culture logo exists in two forms: the stacked mark (ATTN / CUL• / TURE) and the full horizontal wordmark. Both are available in Black and White versions only. The logo is set in Shrimp — a typeface used exclusively for logo construction and never for any other brand communication.</p>
+
+      <div class="logo-grid">
+        <!-- Stacked on Black -->
+        <div class="logo-cell on-black">
+          <img src="assets/logos/logo-stacked-white.png" alt="Stacked logo — white on black" />
+          <div class="logo-meta">
+            <span class="variant-name">Stacked Mark — White</span>
+            <span class="variant-usage">Use on black or dark backgrounds</span>
+          </div>
+        </div>
+        <!-- Stacked on White -->
+        <div class="logo-cell on-white">
+          <img src="assets/logos/logo-stacked-black.png" alt="Stacked logo — black on white" />
+          <div class="logo-meta">
+            <span class="variant-name">Stacked Mark — Black</span>
+            <span class="variant-usage">Use on white or light backgrounds</span>
+          </div>
+        </div>
+        <!-- Horizontal on Black -->
+        <div class="logo-cell on-black">
+          <img src="assets/logos/logo-horizontal-white.png" alt="Horizontal logo — white" class="horizontal" />
+          <div class="logo-meta">
+            <span class="variant-name">Horizontal Wordmark — White</span>
+            <span class="variant-usage">Use on black or dark backgrounds</span>
+          </div>
+        </div>
+        <!-- Horizontal on White -->
+        <div class="logo-cell on-grey">
+          <img src="assets/logos/logo-horizontal-black.png" alt="Horizontal logo — black" class="horizontal" />
+          <div class="logo-meta">
+            <span class="variant-name">Horizontal Wordmark — Black</span>
+            <span class="variant-usage">Use on white or grey backgrounds</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="logo-rules" style="margin-top: 48px;">
+        <div class="logo-rule-card" style="background: var(--black); border-color: rgba(255,255,255,0.08);">
+          <span class="rule-label">Logo on Pink</span>
+          <p>The White version of either logo mark may be placed on a Hot Pink background. This is an approved usage for high-impact brand moments.</p>
+        </div>
+        <div class="logo-rule-card" style="background: var(--black); border-color: rgba(255,255,255,0.08);">
+          <span class="rule-label">Clear Space</span>
+          <p>Always maintain clear space around the logo equal to the height of the bullet point (•) in the stacked mark. Nothing enters this zone.</p>
+        </div>
+        <div class="logo-rule-card" style="background: var(--black); border-color: rgba(255,255,255,0.08);">
+          <span class="rule-label">Never Do</span>
+          <p>Do not recolour the logo. Do not stretch or distort. Do not place on busy photographic backgrounds. Do not recreate using any typeface other than Shrimp.</p>
+        </div>
+      </div>
+
+      <!-- Logo on Pink preview -->
+      <div style="margin-top: 2px; display: grid; grid-template-columns: 1fr 1fr; gap: 2px;">
+        <div class="logo-cell on-pink">
+          <img src="assets/logos/logo-stacked-white.png" alt="Stacked logo — white on pink" />
+          <div class="logo-meta">
+            <span class="variant-name">Stacked Mark — on Pink</span>
+            <span class="variant-usage">Approved for high-impact usage</span>
+          </div>
+        </div>
+        <div class="logo-cell on-pink">
+          <img src="assets/logos/logo-horizontal-white.png" alt="Horizontal logo — white on pink" class="horizontal" />
+          <div class="logo-meta">
+            <span class="variant-name">Horizontal Wordmark — on Pink</span>
+            <span class="variant-usage">Approved for high-impact usage</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 03 TYPOGRAPHY -->
+  <section id="typography">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-num">03</span>
+        <h2 class="section-title">Typography</h2>
+      </div>
+      <p class="intro-text">Three typefaces make up the Attention Culture typographic system. Each has a defined role and should not be interchanged. Together they create a system that is bold, editorial, and technically precise.</p>
+
+      <div class="type-stack">
+
+        <!-- Shrimp -->
+        <div class="type-row">
+          <div class="type-info">
+            <span class="type-label">Logotype only</span>
+            <span class="type-name">Shrimp</span>
+            <span class="type-desc">Used exclusively to construct the logo mark. Never to be used in any other context — headlines, body copy, presentations, or marketing material.</span>
+          </div>
+          <div class="type-sample">
+            <div style="font-size: clamp(40px,7vw,96px); line-height:1; opacity:0.2; letter-spacing: 0.02em; font-style: italic; color: var(--pink);">Logo use only</div>
+          </div>
+        </div>
+
+        <!-- Neue Metana — Headlines -->
+        <div class="type-row">
+          <div class="type-info">
+            <span class="type-label">Headlines</span>
+            <span class="type-name">Neue Metana</span>
+            <span class="type-desc">Primary headline typeface. Used in ALL CAPS for main headlines. Used in lowercase for sub-headlines and button copy. Never mixed case in headlines.</span>
+          </div>
+          <div class="type-sample">
+            <div class="sample-headline-primary">The New Fan Frontier</div>
+            <div class="sample-headline-sub" style="margin-top: 16px;">conscious brand experiences in entertainment</div>
+          </div>
+        </div>
+
+        <!-- Neue Metana — Buttons/Sub -->
+        <div class="type-row">
+          <div class="type-info">
+            <span class="type-label">Buttons & Sub-headlines</span>
+            <span class="type-name">Neue Metana</span>
+            <span class="type-desc">When used in button copy or sub-headlines, Neue Metana is set in lowercase with tighter letter-spacing. It should feel purposeful — not decorative.</span>
+          </div>
+          <div class="type-sample" style="display: flex; flex-direction: column; gap: 16px; align-items: flex-start;">
+            <span class="sample-button">get in touch</span>
+            <span class="sample-button" style="border-color: var(--pink); color: var(--pink);">book an audit</span>
+          </div>
+        </div>
+
+        <!-- Menlo — Body -->
+        <div class="type-row">
+          <div class="type-info">
+            <span class="type-label">Body Copy</span>
+            <span class="type-name">Menlo</span>
+            <span class="type-desc">All body copy, captions, data labels, and supporting text. Also used for the highlight text system (see below). Its monospaced character signals precision and intelligence.</span>
+          </div>
+          <div class="type-sample">
+            <p class="sample-body">An epidemic of doom scrolling and poor mental health is impacting younger generations at an accelerating pace. We believe brands have a moral obligation to market consciously — to look beyond the sale.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Highlight Text System -->
+      <div style="margin-top: 64px;">
+        <h3 style="font-size: clamp(20px, 3vw, 36px); margin-bottom: 8px;">Highlight Text System</h3>
+        <p style="font-family: 'Menlo', monospace; font-size: 14px; color: rgba(255,255,255,0.5); margin-bottom: 0;">Menlo is used across all backgrounds. Three approved background/text combinations exist for making sentences stand out. These are not decorative — they signal importance.</p>
+      </div>
+
+      <div class="highlight-system">
+        <div class="highlight-card dark-bg">
+          <span class="highlight-label">Dark background</span>
+          <p class="highlight-example">Younger generations aren't abandoning digital platforms — they're rejecting algorithms.</p>
+          <span class="highlight-spec">bg: #191919 / text: #FFFFFF</span>
+        </div>
+        <div class="highlight-card light-bg">
+          <span class="highlight-label" style="color: rgba(25,25,25,0.45);">Light background</span>
+          <p class="highlight-example" style="color: var(--black);">Younger generations aren't abandoning digital platforms — they're rejecting algorithms.</p>
+          <span class="highlight-spec" style="color: rgba(25,25,25,0.4);">bg: #FFFFFF / text: #191919</span>
+        </div>
+        <div class="highlight-card pink-bg">
+          <span class="highlight-label">Pink background</span>
+          <p class="highlight-example">Younger generations aren't abandoning digital platforms — they're rejecting algorithms.</p>
+          <span class="highlight-spec">bg: #EA124B / text: #FFFFFF</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 04 TONE OF VOICE -->
+  <section id="voice" class="light">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-num">04</span>
+        <h2 class="section-title">Tone of Voice</h2>
+      </div>
+      <p class="intro-text">Attention Culture is a challenger agency with a conscience. The brand voice is direct, purposeful, and culturally sharp — never corporate, never preachy. We speak with authority because we know this space, and we care about getting it right.</p>
+
+      <div class="tov-grid">
+        <div class="tov-card active">
+          <h4>Direct</h4>
+          <p>We say what we mean. No filler, no waffle. Every sentence earns its place. Short paragraphs, concrete claims, and clear next steps. Readers are busy — respect that.</p>
+        </div>
+        <div class="tov-card active">
+          <h4>Purposeful</h4>
+          <p>Everything we communicate connects back to the mission: conscious brand experiences. We don't just describe what we do — we articulate why it matters for brands, audiences, and culture.</p>
+        </div>
+        <div class="tov-card active">
+          <h4>Culturally Sharp</h4>
+          <p>We are embedded in gaming, music, and entertainment culture. We reference it authentically, never as an outsider trying to sound relevant. Jargon is earned, not performed.</p>
+        </div>
+        <div class="tov-card active">
+          <h4>Confident, Not Arrogant</h4>
+          <p>We hold strong positions on how brands should engage with younger audiences. We share those positions clearly, but we stay curious and collaborative — not dismissive of other views.</p>
+        </div>
+      </div>
+
+      <div class="tov-do-dont">
+        <div class="do-col">
+          <span class="col-header">We sound like this</span>
+          <ul>
+            <li>Brands have a moral obligation to market consciously.</li>
+            <li>Gen Z aren't abandoning digital — they're rejecting algorithms.</li>
+            <li>Smaller communities. Deeper engagement. Better ROI.</li>
+            <li>Attention is human. It's sacred. Treat it that way.</li>
+            <li>Culture isn't a space to exploit — it's a space to protect.</li>
+          </ul>
+        </div>
+        <div class="dont-col">
+          <span class="col-header">Not like this</span>
+          <ul>
+            <li>We leverage best-in-class synergies to optimise engagement metrics.</li>
+            <li>As a forward-thinking agency, we are passionate about our clients' success.</li>
+            <li>Touch base, circle back, move the needle, blue-sky thinking.</li>
+            <li>We're obsessed with disrupting the status quo! 🚀</li>
+            <li>At the end of the day, it's all about creating value for stakeholders.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 05 USAGE EXAMPLES -->
+  <section id="usage">
+    <div class="section-inner">
+      <div class="section-header">
+        <span class="section-num">05</span>
+        <h2 class="section-title">Usage Examples</h2>
+      </div>
+      <p class="intro-text">The brand system works across three primary environment types. Each has its own background and text combination — all drawn from the four-colour palette.</p>
+
+      <div class="usage-grid">
+        <div class="usage-card u1">
+          <div>
+            <h3>Dark Environment</h3>
+            <p>Black background with white body copy and hot pink accents. The primary brand environment — used in decks, hero sections, reports, and digital experiences.</p>
+          </div>
+          <span class="usage-tag">bg: #191919 — text: #FFFFFF</span>
+        </div>
+        <div class="usage-card u2">
+          <div>
+            <h3 style="font-family: 'Neue Metana', sans-serif; text-transform: uppercase;">Light Environment</h3>
+            <p style="font-family: 'Menlo', monospace; font-size: 13px; color: rgba(25,25,25,0.55);">White background with black body copy. Used for document interiors, supporting slide layouts, and printed materials.</p>
+          </div>
+          <span class="usage-tag" style="font-family: 'Menlo', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(25,25,25,0.35);">bg: #FFFFFF — text: #191919</span>
+        </div>
+        <div class="usage-card u3">
+          <div>
+            <h3 style="font-family: 'Neue Metana', sans-serif; text-transform: uppercase;">Grey Environment</h3>
+            <p style="font-family: 'Menlo', monospace; font-size: 13px; color: rgba(25,25,25,0.55);">Grey background with black body copy. Used for supporting sections within documents and slide decks to create visual hierarchy without switching to full white.</p>
+          </div>
+          <span class="usage-tag" style="font-family: 'Menlo', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(25,25,25,0.35);">bg: #EAEFEF — text: #191919</span>
+        </div>
+      </div>
+
+      <!-- Pink usage -->
+      <div style="margin-top: 2px; background: var(--pink); padding: 60px 40px; display: flex; flex-direction: column; justify-content: space-between; min-height: 240px;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 24px;">
+          <div>
+            <h3 style="font-family: 'Neue Metana', sans-serif; text-transform: uppercase; font-size: clamp(22px,3vw,40px); color: var(--white); margin-bottom: 12px;">Pink Environment</h3>
+            <p style="font-family: 'Menlo', monospace; font-size: 13px; color: rgba(255,255,255,0.7); max-width: 480px; line-height: 1.7;">Hot Pink backgrounds are reserved for high-impact brand moments — cover pages, key data callouts, CTAs, section dividers. Used at full saturation only. White logo and white text exclusively.</p>
+          </div>
+          <img src="assets/logos/logo-stacked-white.png" alt="Logo on pink" style="height: 80px; opacity: 0.9;" />
+        </div>
+        <span style="font-family: 'Menlo', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.4); margin-top: 32px;">bg: #EA124B — text: #FFFFFF — logo: white variant only</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <img src="assets/logos/logo-horizontal-white.png" alt="Attention Culture" />
+    <p>
+      Brand Guidelines v1.0 — March 2026<br />
+      attentionculture.co.uk<br />
+      <span style="color: rgba(255,255,255,0.15);">Sasele Ltd — Company No. 16024759</span>
+    </p>
+  </footer>
+
+</body>
+</html>
