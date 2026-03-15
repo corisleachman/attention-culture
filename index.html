@@ -211,6 +211,77 @@
       font-size: clamp(18px, 2.5vw, 32px); color: rgba(255,255,255,0.65);
     }
     .sample-body { font-family: 'Menlo', monospace; font-size: 14px; line-height: 1.8; color: rgba(255,255,255,0.6); max-width: 500px; }
+    /* DOWNLOAD STRIP */
+    .download-strip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-top: 2px;
+      padding: 28px 32px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.02);
+    }
+    section.on-light .download-strip {
+      border-color: rgba(0,0,0,0.07);
+      background: rgba(0,0,0,0.02);
+    }
+    .download-strip-text {}
+    .download-strip-text .dl-label {
+      font-family: 'Menlo', monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.3);
+      display: block;
+      margin-bottom: 4px;
+    }
+    section.on-light .download-strip-text .dl-label { color: rgba(25,25,25,0.35); }
+    .download-strip-text .dl-title {
+      font-family: 'Neue Metana', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--white);
+    }
+    section.on-light .download-strip-text .dl-title { color: var(--black); }
+    .download-strip-text .dl-meta {
+      font-family: 'Menlo', monospace;
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
+      margin-top: 3px;
+      display: block;
+    }
+    section.on-light .download-strip-text .dl-meta { color: rgba(25,25,25,0.35); }
+    .dl-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Neue Metana', sans-serif;
+      font-weight: 400;
+      font-size: 12px;
+      text-transform: lowercase;
+      letter-spacing: 0.06em;
+      padding: 12px 24px;
+      border-radius: 100px;
+      border: 1.5px solid currentColor;
+      background: transparent;
+      cursor: pointer;
+      line-height: 1;
+      text-decoration: none;
+      transition: background 0.25s ease, color 0.25s ease;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .dl-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+    /* on dark bg */
+    .dl-btn.dl-white { color: var(--white); }
+    .dl-btn.dl-white:hover { background: var(--white); color: var(--black); }
+    /* on light bg */
+    .dl-btn.dl-black { color: var(--black); }
+    .dl-btn.dl-black:hover { background: var(--black); color: var(--white); }
+
     /* BUTTONS */
     .btn-pill {
       display: inline-block;
@@ -460,6 +531,22 @@
         <div class="logo-rule"><span class="rule-label">Minimum Size</span><p>The stacked mark should never be reproduced smaller than 24px tall. The horizontal wordmark no smaller than 16px tall.</p></div>
         <div class="logo-rule"><span class="rule-label">Never Do</span><p>Do not recolour. Do not stretch or distort. Do not place on photographic backgrounds. Do not recreate in any typeface other than Shrimp.</p></div>
       </div>
+
+      <div class="download-strip">
+        <div class="download-strip-text">
+          <span class="dl-label">Download</span>
+          <span class="dl-title">Logo Pack</span>
+          <span class="dl-meta">Stacked mark + horizontal wordmark — black &amp; white variants — PNG</span>
+        </div>
+        <a class="dl-btn dl-black" href="assets/downloads/attention-culture-logos.zip" download="attention-culture-logos.zip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          download logo pack
+        </a>
+      </div>
     </div>
   </section>
 
@@ -585,10 +672,24 @@
 
       </div>
 
+      <div class="download-strip">
+        <div class="download-strip-text">
+          <span class="dl-label">Download</span>
+          <span class="dl-title">Font Pack</span>
+          <span class="dl-meta">Neue Metana Regular + Bold (OTF) &amp; Menlo Regular, Bold, Italic, Bold Italic (TTF)</span>
+        </div>
+        <a class="dl-btn dl-white" href="assets/downloads/attention-culture-fonts.zip" download="attention-culture-fonts.zip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          download font pack
+        </a>
+      </div>
+
     </div>
   </section>
-
-  <!-- 04 TONE OF VOICE -->
   <section id="voice" class="on-light">
     <div class="section-inner">
       <div class="section-header">
