@@ -233,11 +233,11 @@
     .hd-light .hd-label, .hd-grey .hd-label { color: rgba(25,25,25,0.4); }
     /* The per-line highlight: tight bg behind each text line */
     .ht {
-      font-family: 'Menlo', monospace; font-size: 15px; line-height: 2;
+      font-family: 'Menlo', monospace; font-size: 15px;
       display: inline;
       -webkit-box-decoration-break: clone;
       box-decoration-break: clone;
-      padding: 0.08em 0.3em;
+      padding: 0.2em 0.35em;
     }
     .ht-black-white { background: var(--black); color: var(--white); }
     .ht-white-black { background: var(--white); color: var(--black); }
@@ -502,38 +502,43 @@
       </div>
 
       <div class="highlight-demos">
+
+        <!-- DARK panel: black text on white bg / white text on pink bg -->
         <div class="highlight-demo hd-dark">
           <span class="hd-label">On dark background</span>
-          <div style="line-height:2.1;">
+          <div style="line-height:1.1;">
+            <span class="ht ht-white-black">Younger generations aren't abandoning digital platforms — they're rejecting algorithms.</span>
+          </div>
+          <div style="line-height:1.1; margin-top: 20px;">
+            <span class="ht ht-pink-white">Key insight: overexposure and content fatigue have pushed communities into private spaces.</span>
+          </div>
+          <span class="hd-spec">White bg + black text &nbsp;/&nbsp; Pink bg + white text</span>
+        </div>
+
+        <!-- LIGHT panel: white text on black bg / white text on pink bg -->
+        <div class="highlight-demo hd-light">
+          <span class="hd-label">On white background</span>
+          <div style="line-height:1.1;">
             <span class="ht ht-black-white">Younger generations aren't abandoning digital platforms — they're rejecting algorithms.</span>
           </div>
-          <div style="line-height:2.1;">
+          <div style="line-height:1.1; margin-top: 20px;">
             <span class="ht ht-pink-white">Key insight: overexposure and content fatigue have pushed communities into private spaces.</span>
           </div>
           <span class="hd-spec">Black bg + white text &nbsp;/&nbsp; Pink bg + white text</span>
         </div>
 
-        <div class="highlight-demo hd-light">
-          <span class="hd-label">On white background</span>
-          <div style="line-height:2.1;">
-            <span class="ht ht-white-black" style="box-shadow:0 0 0 1px rgba(0,0,0,0.1);">Younger generations aren't abandoning digital platforms — they're rejecting algorithms.</span>
-          </div>
-          <div style="line-height:2.1;">
-            <span class="ht ht-pink-white">Key insight: overexposure and content fatigue have pushed communities into private spaces.</span>
-          </div>
-          <span class="hd-spec">White bg + black text &nbsp;/&nbsp; Pink bg + white text</span>
-        </div>
-
+        <!-- GREY panel: white text on black bg / white text on pink bg -->
         <div class="highlight-demo hd-grey">
           <span class="hd-label">On grey background</span>
-          <div style="line-height:2.1;">
-            <span class="ht ht-white-black">Younger generations aren't abandoning digital platforms — they're rejecting algorithms.</span>
+          <div style="line-height:1.1;">
+            <span class="ht ht-black-white">Younger generations aren't abandoning digital platforms — they're rejecting algorithms.</span>
           </div>
-          <div style="line-height:2.1;">
+          <div style="line-height:1.1; margin-top: 20px;">
             <span class="ht ht-pink-white">Key insight: overexposure and content fatigue have pushed communities into private spaces.</span>
           </div>
-          <span class="hd-spec">White bg + black text &nbsp;/&nbsp; Pink bg + white text</span>
+          <span class="hd-spec">Black bg + white text &nbsp;/&nbsp; Pink bg + white text</span>
         </div>
+
       </div>
 
     </div>
@@ -591,8 +596,12 @@
 
       <div class="usage-environments">
         <div class="env-card e-dark">
-          <div><h3>Dark Environment</h3><p>Black background with white body copy and hot pink accents. The primary brand environment — used in decks, hero sections, reports, and digital products.</p></div>
-          <span class="env-spec">bg: #191919 / text: #FFFFFF / accent: #EA124B</span>
+          <div>
+            <img class="logo-white" src="assets/logos/logo-stacked-black-transparent.png" alt="" style="height:60px;margin-bottom:20px;display:block;" />
+            <h3>Dark Environment</h3>
+            <p>Black background with white body copy and hot pink accents. The primary brand environment — used in decks, hero sections, reports, and digital products.</p>
+          </div>
+          <span class="env-spec">bg: #191919 / text: #FFFFFF / logo: white variant</span>
         </div>
         <div class="env-card e-pink">
           <div>
@@ -603,12 +612,20 @@
           <span class="env-spec">bg: #EA124B / text: #FFFFFF / logo: white variant</span>
         </div>
         <div class="env-card e-light">
-          <div><h3>Light Environment</h3><p>White background with black body copy. Used for document interiors, supporting slide layouts, and print materials. Hot Pink may be used sparingly as accent.</p></div>
-          <span class="env-spec">bg: #FFFFFF / text: #191919 / accent: #EA124B</span>
+          <div>
+            <img class="logo-black" src="assets/logos/logo-stacked-black-transparent.png" alt="" style="height:60px;margin-bottom:20px;display:block;" />
+            <h3>Light Environment</h3>
+            <p>White background with black body copy. Used for document interiors, supporting slide layouts, and print materials. Hot Pink may be used sparingly as accent.</p>
+          </div>
+          <span class="env-spec">bg: #FFFFFF / text: #191919 / logo: black variant</span>
         </div>
         <div class="env-card e-grey">
-          <div><h3>Grey Environment</h3><p>Grey background with black body copy. Used within documents to create visual hierarchy and section separation without switching to full white.</p></div>
-          <span class="env-spec">bg: #EAEFEF / text: #191919 / accent: #EA124B</span>
+          <div>
+            <img class="logo-black" src="assets/logos/logo-stacked-black-transparent.png" alt="" style="height:60px;margin-bottom:20px;display:block;" />
+            <h3>Grey Environment</h3>
+            <p>Grey background with black body copy. Used within documents to create visual hierarchy and section separation without switching to full white.</p>
+          </div>
+          <span class="env-spec">bg: #EAEFEF / text: #191919 / logo: black variant</span>
         </div>
       </div>
     </div>
